@@ -493,7 +493,7 @@ public final class PacketCustom extends PacketBuffer implements MCDataHandler {
     public static void sendToPlayer(Packet packet, EntityPlayer player) {
         if (player == null) {
             sendToClients(packet);
-        } else {
+        } else if (((EntityPlayerMP) player).connection != null) {
             ((EntityPlayerMP) player).connection.sendPacket(packet);
         }
     }
